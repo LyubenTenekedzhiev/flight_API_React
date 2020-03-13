@@ -1,0 +1,9 @@
+.LandingPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.LandingPageTitle {
+  height: 10rem;
+  border: 1px solid black;
+}
