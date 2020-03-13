@@ -8,24 +8,31 @@ import searchFlights from "../searchFlights";
 class FlightSection extends React.Component {
   state = {
     data: [],
-    loading: true,
+    loading: false,
     origin: "",
     destination: ""
   };
-  
+
   componentDidUpdate(prevProps, snapshot) {
-    if(prevProps.submitted !== this.props.submitted) {
+    if (prevProps.submitted !== this.props.submitted) {
+      if (prevProps.direct !== this.props.direct) {
+        this.getFlightsHandler();
+        this.setState({ loading: true });
+        return this.props.submitted;
+      }
       this.getFlightsHandler();
+      this.setState({ loading: true })
       return this.props.submitted;
     }
   }
 
   getFlightsHandler = async () => {
-    const data = await searchFlights(this.props.origin, this.props.destination);
+    const data = await searchFlights(this.props.origin, this.props.destination, this.props.direct);
+    console.log(data);
     this.setState(prevState => {
       return {
         ...prevState,
-        data: prevState.data.concat(data),
+        data,
         loading: false
       };
     });
@@ -34,17 +41,25 @@ class FlightSection extends React.Component {
   render() {
     // Fligth is a Spinner while loading and then it renders as flights
     let flight = null;
+    let content = <h1>Voyage, voyage</h1>;
     if (this.state.loading) {
       flight = <Spinner />;
-    } else if(this.state.data.length === 0) {
-      flight = <h1>Corono situation</h1>
+      content = null;
+    } else if (this.state.data.length === 0) {
+      flight = <h1>Corona situation</h1>;
     } else {
+      content = null;
       flight = this.state.data.map(flight => {
         return <Flight key={flight.id} {...flight} />;
       });
     }
 
-    return <div className={classes.FlightSection}>{flight}</div>;
+    return (
+      <div className={classes.FlightSection}>
+        {flight}
+        {content}
+      </div>
+    );
   }
 }
 

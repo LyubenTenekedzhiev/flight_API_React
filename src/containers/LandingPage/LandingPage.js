@@ -12,9 +12,10 @@ class LandingPage extends React.Component {
     dropdownFromOpen: false,
     flightsFrom: "",
     flightsTo: "",
-    destination: '',
-    originFrom: '',
+    destination: "",
+    originFrom: "",
     submitted: false,
+    direct: 2
   };
 
   componentDidMount() {
@@ -42,24 +43,32 @@ class LandingPage extends React.Component {
     });
   };
 
-  itemSelectFromHandler = (event) => {
+  itemSelectFromHandler = event => {
     // console.log('innerText', typeof(event.target.innerText));
     const destArray = Object.entries(this.state.flightsFrom);
     const originFrom = destArray.filter(item => item[1] === event.target.innerText);
     // console.log('value', originFrom[0][0])
-    this.setState({ originFrom: originFrom[0][0] })
-  }
+    this.setState({ originFrom: originFrom[0][0] });
+  };
 
-  itemSelectToHandler = (event) => {
+  itemSelectToHandler = event => {
     // console.log('innerText', typeof(event.target.innerText));
     const destArray = Object.entries(this.state.flightsTo);
     const destination = destArray.filter(item => item[1] === event.target.innerText);
-    this.setState({ destination: destination[0][0] })
-  }
+    this.setState({ destination: destination[0][0] });
+  };
+
+  directFlightsClickHandler = event => {
+    if (event.target.checked) {
+      this.setState({ direct: 0 });
+    } else {
+      this.setState({ direct: 2 });
+    }
+  };
 
   submitDataHandler = () => {
-    this.setState({ submitted: !this.state.submitted })
-  }
+    this.setState({ submitted: !this.state.submitted });
+  };
 
   render() {
     let destinationTo = Object.values(this.state.flightsTo);
@@ -88,9 +97,16 @@ class LandingPage extends React.Component {
               To
             </SearchBarTo>
             <button onClick={this.submitDataHandler}>Submit</button>
+            <label>Direct flights only:</label>
+            <input type='checkbox' onChange={this.directFlightsClickHandler} />
           </div>
         </div>
-        <FlightSection origin={this.state.originFrom} destination={this.state.destination} submitted={this.state.submitted} />
+        <FlightSection
+          origin={this.state.originFrom}
+          destination={this.state.destination}
+          submitted={this.state.submitted}
+          direct={this.state.direct}
+        />
       </div>
     );
   }
