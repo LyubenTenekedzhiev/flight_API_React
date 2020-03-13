@@ -7,28 +7,38 @@ import searchFlights from "../searchFlights";
 
 class FlightSection extends React.Component {
   state = {
-    cityFrom: '',
-    cityTo: '',
-
-  }
+    data: [],
+    loading: true,
+  };
 
   async componentDidMount() {
     const data = await searchFlights();
-    console.log(data);
     this.setState(prevState => {
       return {
         ...prevState,
-        cityFrom: data[0].cityFrom,
-      }
-    })
+        data: prevState.data.concat(data),
+        loading: false,
+      };
+    });
+    console.log(data);
   }
 
   render() {
-    console.log(this.state.cityFrom);
+    console.log(this.state.data);
+
+    // Fligth is a Spinner while loading and then it renders as flights
+    let flight = null;
+    if(this.state.loading) {
+      flight = <Spinner />
+    } else {
+      flight = this.state.data.map(flight => {
+        return <Flight key={flight.id} {...flight} />
+      })
+    }
+
     return (
       <div className={classes.FlightSection}>
-        <Flight />
-        <Spinner />
+        {flight}
       </div>
     );
   }

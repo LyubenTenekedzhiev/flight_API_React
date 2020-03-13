@@ -18,10 +18,10 @@ const searchFlights = async (origin, destination, direct) => {
     limit: 5
   });
   const url = new URL(`?${query}`, "https://api.skypicker.com/flights");
-  console.log("url", url);
+  // console.log("url", url);
   const response = await fetch(url);
   const data = await response.json();
-  console.log("data", data.data);
+  // console.log("data", data.data);
   return data.data
 };
 
