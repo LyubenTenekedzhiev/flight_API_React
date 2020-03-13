@@ -22,6 +22,7 @@ const searchFlights = async (origin, destination, direct) => {
   const response = await fetch(url);
   const data = await response.json();
   console.log("data", data.data);
+  return data.data
 };
 
 export default searchFlights;

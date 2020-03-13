@@ -6,11 +6,25 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import searchFlights from "../searchFlights";
 
 class FlightSection extends React.Component {
-  componentDidMount() {
-    searchFlights();
+  state = {
+    cityFrom: '',
+    cityTo: '',
+
+  }
+
+  async componentDidMount() {
+    const data = await searchFlights();
+    console.log(data);
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        cityFrom: data[0].cityFrom,
+      }
+    })
   }
 
   render() {
+    console.log(this.state.cityFrom);
     return (
       <div className={classes.FlightSection}>
         <Flight />
