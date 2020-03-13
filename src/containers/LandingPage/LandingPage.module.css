@@ -12,3 +12,12 @@
   display: flex;
   justify-content: center;
 }
+
+.DF {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}

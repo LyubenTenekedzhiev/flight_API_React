@@ -5,7 +5,6 @@ import LandingPage from "./containers/LandingPage/LandingPage";
 function App() {
   return (
     <div className="App">
-      <h1>corona</h1>
       <LandingPage />
     </div>
   );

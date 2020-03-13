@@ -45,13 +45,17 @@ class LandingPage extends React.Component {
 
   itemSelectFromHandler = event => {
     const destArray = Object.entries(this.state.flightsFrom);
-    const originFrom = destArray.filter(item => item[1] === event.target.innerText);
+    const originFrom = destArray.filter(
+      item => item[1] === event.target.innerText
+    );
     this.setState({ originFrom: originFrom[0][0] });
   };
 
   itemSelectToHandler = event => {
     const destArray = Object.entries(this.state.flightsTo);
-    const destination = destArray.filter(item => item[1] === event.target.innerText);
+    const destination = destArray.filter(
+      item => item[1] === event.target.innerText
+    );
     this.setState({ destination: destination[0][0] });
   };
 
@@ -74,8 +78,7 @@ class LandingPage extends React.Component {
     return (
       <div className={classes.LandingPage}>
         <div className={classes.LandingPageTitle}>
-          <h1>title goes here and maybe an image</h1>
-          <h2>Searchbars for flights</h2>
+          <h1>Flight Explorer</h1>
           <div className={classes.Dropdown}>
             <SearchBarFrom
               flightsFrom={destinationFrom}
@@ -94,8 +97,13 @@ class LandingPage extends React.Component {
               To
             </SearchBarTo>
             <button onClick={this.submitDataHandler}>Submit</button>
-            <label>Direct flights only:</label>
-            <input type='checkbox' onChange={this.directFlightsClickHandler} />
+            <div className={classes.DF}>
+              <label>Direct flights only:</label>
+              <input
+                type="checkbox"
+                onChange={this.directFlightsClickHandler}
+              />
+            </div>
           </div>
         </div>
         <FlightSection
