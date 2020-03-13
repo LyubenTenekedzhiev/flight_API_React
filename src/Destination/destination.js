@@ -1,6 +1,6 @@
 export const flightsFrom = {
   SXF: "Berlin",
-  WAW: "Warshaw",
+  WAW: "Warsaw",
   PED: "Pardubice",
   PRG: "Prague"
 };
