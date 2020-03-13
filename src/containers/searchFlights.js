@@ -19,6 +19,9 @@ const searchFlights = async (origin, destination, direct) => {
   });
   const url = new URL(`?${query}`, "https://api.skypicker.com/flights");
   console.log("url", url);
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log("data", data.data);
 };
 
 export default searchFlights;
