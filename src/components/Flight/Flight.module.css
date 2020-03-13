@@ -1,0 +1,11 @@
+.Flight {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid black;
+  font-size: .6rem;
+}
+
+.FlightTime {
+
+}
