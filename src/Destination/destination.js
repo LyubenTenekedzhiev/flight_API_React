@@ -1,13 +1,15 @@
-const flightsFrom = {
-  Berlin: 'SXF',
-  Warshaw: 'WAW',
-  Pardubice: 'PED',
-  Prague: 'PRG'
+export const flightsFrom = {
+  SXF: 'Berlin',
+  WAW: 'Warshaw',
+  PED: 'Pardubice',
+  PRG: 'Prague'
 } 
 
-const flightsTo = {
-  Valencia: 'VLC',
-  Barcelona: 'BCN',
-  Milano: 'MXP',
-  Athens: 'ATH'
+export const flightsTo = {
+  VLC: 'Valencia',
+  BCN: 'Barcelona',
+  MXP: 'Milano',
+  ATH: 'Athens'
 }
+
+

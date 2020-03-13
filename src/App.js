@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React from "react";
 import "./App.css";
 import LandingPage from "./containers/LandingPage/LandingPage";
+=======
+import React from 'react';
+import './App.css';
+import LandingPage from './containers/LandingPage/LandingPage';
+>>>>>>> a71b611646fab83409eb1480e170304837002fd9
 
 function App() {
   return (
