@@ -4,8 +4,6 @@ const searchFlights = async (origin, destination, direct) => {
     .plus({ days: 1 })
     .toFormat("dd/MM/yyyy");
   const todayDate = DateTime.local().toFormat("dd/MM/yyyy");
-  console.log("todays date", todayDate);
-  console.log("tomorrowsdate", when);
 
   const query = new URLSearchParams({
     partner: "picky",

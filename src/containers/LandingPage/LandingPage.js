@@ -39,15 +39,11 @@ class LandingPage extends React.Component {
     });
   };
 
-  itemSelectHandler = (event) => {
-    // console.log('innerText', event.target.innerText);
-    for(let key in this.state.flightsFrom) {
-      if(event.target.innerText === this.state.flightsFrom.key) {
-        console.log('value', 1);
-      }
-      // console.log('key', this.state.flightsFrom.key)
-    }
-    // console.log(this.state.flightsFrom.SXF)
+  itemSelectFromHandler = (event) => {
+    // console.log('innerText', typeof(event.target.innerText));
+    const destArray = Object.entries(this.state.flightsFrom);
+    const origin = destArray.filter(item => item[1] === event.target.innerText);
+    console.log('value', origin[0][0])
   }
 
   render() {
@@ -78,7 +74,7 @@ class LandingPage extends React.Component {
             </SearchBarTo>
           </div>
         </div>
-        <FlightSection />
+        <FlightSection origin={origin[0][0]} />
       </div>
     );
   }
