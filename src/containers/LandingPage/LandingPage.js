@@ -44,15 +44,12 @@ class LandingPage extends React.Component {
   };
 
   itemSelectFromHandler = event => {
-    // console.log('innerText', typeof(event.target.innerText));
     const destArray = Object.entries(this.state.flightsFrom);
     const originFrom = destArray.filter(item => item[1] === event.target.innerText);
-    // console.log('value', originFrom[0][0])
     this.setState({ originFrom: originFrom[0][0] });
   };
 
   itemSelectToHandler = event => {
-    // console.log('innerText', typeof(event.target.innerText));
     const destArray = Object.entries(this.state.flightsTo);
     const destination = destArray.filter(item => item[1] === event.target.innerText);
     this.setState({ destination: destination[0][0] });

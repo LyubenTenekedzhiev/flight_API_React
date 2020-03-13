@@ -6,6 +6,7 @@
   font-size: .6rem;
 }
 
-.FlightTime {
-
+.FlightStopovers {
+  display: flex;
+  flex-direction: column;
 }
