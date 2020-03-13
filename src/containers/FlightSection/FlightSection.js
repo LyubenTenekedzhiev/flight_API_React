@@ -6,17 +6,11 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import searchFlights from "../searchFlights";
 import { flightsFrom, flightsTo} from "../../Destination/destination"
 
-console.log("flightsFrom", flightsFrom, "flightsTo", flightsTo)
 
 class FlightSection extends React.Component {
   state = {
-<<<<<<< HEAD
-    cityFrom: "",
-    cityTo: ""
-=======
-    data: [],
-    loading: true,
->>>>>>> a71b611646fab83409eb1480e170304837002fd9
+   data: [],
+   loading: true,
   };
 
   async componentDidMount() {
@@ -24,17 +18,10 @@ class FlightSection extends React.Component {
     this.setState(prevState => {
       return {
         ...prevState,
-<<<<<<< HEAD
-        cityFrom: data[0].cityFrom
-      };
-    });
-=======
         data: prevState.data.concat(data),
-        loading: false,
+        loading: false
       };
     });
-    console.log(data);
->>>>>>> a71b611646fab83409eb1480e170304837002fd9
   }
 
   render() {
