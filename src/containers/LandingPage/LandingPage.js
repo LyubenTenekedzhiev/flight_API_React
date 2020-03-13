@@ -15,7 +15,6 @@ class LandingPage extends React.Component {
   };
 
   componentDidMount() {
-    // console.log("flightsFrom", flightsFrom, "flightsTo", flightsTo);
     this.setState(prevState => {
       return {
         flightsFrom: flightsFrom,
@@ -25,7 +24,6 @@ class LandingPage extends React.Component {
   }
 
   dropDownToClickHandler = () => {
-    // console.log("event", event.target.innerText);
     this.setState(prevState => {
       return {
         dropdownToOpen: !prevState.dropdownToOpen
@@ -34,7 +32,6 @@ class LandingPage extends React.Component {
   };
 
   dropDownFromClickHandler = () => {
-    // console.log("event", event.target.innerText);
     this.setState(prevState => {
       return {
         dropdownFromOpen: !prevState.dropdownFromOpen
@@ -42,10 +39,21 @@ class LandingPage extends React.Component {
     });
   };
 
+  itemSelectHandler = (event) => {
+    // console.log('innerText', event.target.innerText);
+    for(let key in this.state.flightsFrom) {
+      if(event.target.innerText === this.state.flightsFrom.key) {
+        console.log('value', 1);
+      }
+      // console.log('key', this.state.flightsFrom.key)
+    }
+    // console.log(this.state.flightsFrom.SXF)
+  }
+
   render() {
     let destinationTo = Object.values(this.state.flightsTo);
     let destinationFrom = Object.values(this.state.flightsFrom);
-    console.log(destinationFrom);
+    // console.log(this.state.flightsFrom);
 
     return (
       <div className={classes.LandingPage}>
@@ -56,11 +64,16 @@ class LandingPage extends React.Component {
             <SearchBarFrom
               flightsFrom={destinationFrom}
               dropdownOpen={this.state.dropdownFromOpen}
-              dropDownClickHandler={this.dropDownToClickHandler}
+              dropDownClickHandler={this.dropDownFromClickHandler}
+              itemSelectHandler={this.itemSelectHandler}
             >
               From
             </SearchBarFrom>
-            <SearchBarTo flightsTo={destinationTo} dropdownOpen={this.state.dropdownToOpen} dropDownClickHandler={this.dropDownFromClickHandler}>
+            <SearchBarTo
+              flightsTo={destinationTo}
+              dropdownOpen={this.state.dropdownToOpen}
+              dropDownClickHandler={this.dropDownToClickHandler}
+            >
               To
             </SearchBarTo>
           </div>

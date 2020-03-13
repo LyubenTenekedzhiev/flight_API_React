@@ -4,9 +4,9 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap
 import classes from "./SearchBars.module.css";
 
 function searchBar(props) {
-  const { dropdownOpen, dropDownClickHandler, flightsFrom } = props;
+  const { dropdownOpen, dropDownClickHandler, flightsFrom, itemSelectHandler } = props;
   let flightFrom = flightsFrom.map(item => {
-    return <DropdownItem key={item}>{item}</DropdownItem>;
+    return <DropdownItem key={item} onClick={itemSelectHandler}>{item}</DropdownItem>;
   });
 
   return (
