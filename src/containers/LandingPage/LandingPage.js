@@ -24,7 +24,7 @@ class LandingPage extends React.Component {
           <h1>title goes here and maybe an image</h1>
           <h2>Searchbars for flights</h2>
 
-          {/* <Dropdown isOpen={this.state.dropdownOpen} toggle={this.dropDownClickHandler}>
+          <Dropdown isOpen={this.state.dropdownOpen} toggle={this.dropDownClickHandler}>
             <DropdownToggle caret>Dropdown</DropdownToggle>
             <DropdownMenu>
               <DropdownItem header>Header</DropdownItem>
@@ -35,7 +35,7 @@ class LandingPage extends React.Component {
               <DropdownItem>Bar Action</DropdownItem>
               <DropdownItem>Quo Action</DropdownItem>
             </DropdownMenu>
-          </Dropdown> */}
+          </Dropdown>
 
         </div>
         <FlightSection />

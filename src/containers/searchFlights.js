@@ -1,5 +1,4 @@
 import { DateTime } from "luxon";
-
 const searchFlights = async (origin, destination, direct) => {
   const when = DateTime.local()
     .plus({ days: 1 })

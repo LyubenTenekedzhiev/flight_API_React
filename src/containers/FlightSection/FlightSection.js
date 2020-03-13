@@ -4,6 +4,9 @@ import classes from "./FlightSection.module.css";
 import Flight from "./../../components/Flight/Flight";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import searchFlights from "../searchFlights";
+import { flightsFrom, flightsTo} from "../../Destination/destination"
+
+console.log("flightsFrom", flightsFrom, "flightsTo", flightsTo)
 
 class FlightSection extends React.Component {
   state = {
