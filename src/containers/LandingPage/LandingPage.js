@@ -11,7 +11,10 @@ class LandingPage extends React.Component {
     dropdownToOpen: false,
     dropdownFromOpen: false,
     flightsFrom: "",
-    flightsTo: ""
+    flightsTo: "",
+    destination: '',
+    originFrom: '',
+    submitted: false,
   };
 
   componentDidMount() {
@@ -42,14 +45,25 @@ class LandingPage extends React.Component {
   itemSelectFromHandler = (event) => {
     // console.log('innerText', typeof(event.target.innerText));
     const destArray = Object.entries(this.state.flightsFrom);
-    const origin = destArray.filter(item => item[1] === event.target.innerText);
-    console.log('value', origin[0][0])
+    const originFrom = destArray.filter(item => item[1] === event.target.innerText);
+    // console.log('value', originFrom[0][0])
+    this.setState({ originFrom: originFrom[0][0] })
+  }
+
+  itemSelectToHandler = (event) => {
+    // console.log('innerText', typeof(event.target.innerText));
+    const destArray = Object.entries(this.state.flightsTo);
+    const destination = destArray.filter(item => item[1] === event.target.innerText);
+    this.setState({ destination: destination[0][0] })
+  }
+
+  submitDataHandler = () => {
+    this.setState({ submitted: !this.state.submitted })
   }
 
   render() {
     let destinationTo = Object.values(this.state.flightsTo);
     let destinationFrom = Object.values(this.state.flightsFrom);
-    // console.log(this.state.flightsFrom);
 
     return (
       <div className={classes.LandingPage}>
@@ -61,7 +75,7 @@ class LandingPage extends React.Component {
               flightsFrom={destinationFrom}
               dropdownOpen={this.state.dropdownFromOpen}
               dropDownClickHandler={this.dropDownFromClickHandler}
-              itemSelectHandler={this.itemSelectHandler}
+              itemSelectFromHandler={this.itemSelectFromHandler}
             >
               From
             </SearchBarFrom>
@@ -69,12 +83,14 @@ class LandingPage extends React.Component {
               flightsTo={destinationTo}
               dropdownOpen={this.state.dropdownToOpen}
               dropDownClickHandler={this.dropDownToClickHandler}
+              itemSelectToHandler={this.itemSelectToHandler}
             >
               To
             </SearchBarTo>
+            <button onClick={this.submitDataHandler}>Submit</button>
           </div>
         </div>
-        <FlightSection origin={origin[0][0]} />
+        <FlightSection origin={this.state.originFrom} destination={this.state.destination} submitted={this.state.submitted} />
       </div>
     );
   }

@@ -8,8 +8,8 @@ const searchFlights = async (origin, destination, direct) => {
   const query = new URLSearchParams({
     partner: "picky",
     v: 3,
-    flyFrom: "WAW",
-    to: "ATH",
+    flyFrom: origin,
+    to: destination,
     dateFrom: todayDate,
     dateTo: when,
     limit: 5
