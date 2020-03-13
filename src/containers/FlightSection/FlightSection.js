@@ -7,10 +7,9 @@ import searchFlights from "../searchFlights";
 
 class FlightSection extends React.Component {
   state = {
-    cityFrom: '',
-    cityTo: '',
-
-  }
+    cityFrom: "",
+    cityTo: ""
+  };
 
   async componentDidMount() {
     const data = await searchFlights();
@@ -18,9 +17,9 @@ class FlightSection extends React.Component {
     this.setState(prevState => {
       return {
         ...prevState,
-        cityFrom: data[0].cityFrom,
-      }
-    })
+        cityFrom: data[0].cityFrom
+      };
+    });
   }
 
   render() {
