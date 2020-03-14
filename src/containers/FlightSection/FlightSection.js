@@ -21,13 +21,17 @@ class FlightSection extends React.Component {
         return this.props.submitted;
       }
       this.getFlightsHandler();
-      this.setState({ loading: true })
+      this.setState({ loading: true });
       return this.props.submitted;
     }
   }
 
   getFlightsHandler = async () => {
-    const data = await searchFlights(this.props.origin, this.props.destination, this.props.direct);
+    const data = await searchFlights(
+      this.props.origin,
+      this.props.destination,
+      this.props.direct
+    );
     console.log(data);
     this.setState(prevState => {
       return {
@@ -39,14 +43,23 @@ class FlightSection extends React.Component {
   };
 
   render() {
-    // Fligth is a Spinner while loading and then it renders as flights
+    // Flight is a Spinner while loading and then it renders as flights
     let flight = null;
     let content = <h1>Voyage, voyage</h1>;
+
+    if (!this.state.origin) {
+      content = null;
+    }
+
     if (this.state.loading) {
       flight = <Spinner />;
       content = null;
     } else if (this.state.data.length === 0) {
-      flight = <h1>Corona situation</h1>;
+      flight = (
+        <h3 className={classes.Warning}>
+          Warning: Flights might be cancelled due to COVID-19
+        </h3>
+      );
     } else {
       content = null;
       flight = this.state.data.map(flight => {

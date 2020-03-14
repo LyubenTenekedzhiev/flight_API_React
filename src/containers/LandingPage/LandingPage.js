@@ -78,7 +78,7 @@ class LandingPage extends React.Component {
     return (
       <div className={classes.LandingPage}>
         <div className={classes.LandingPageTitle}>
-          <h1>Flight Explorer</h1>
+          <h1 className={classes.Blue}>Flight Explorer</h1>
           <div className={classes.Dropdown}>
             <SearchBarFrom
               flightsFrom={destinationFrom}
@@ -96,7 +96,7 @@ class LandingPage extends React.Component {
             >
               To
             </SearchBarTo>
-            <button onClick={this.submitDataHandler}>Submit</button>
+            <button onClick={this.submitDataHandler}>Search</button>
             <div className={classes.DF}>
               <label>Direct flights only:</label>
               <input
