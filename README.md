@@ -1,3 +1,24 @@
+# Coding Bootcamp Praha Hackathon #4: Flight Search React Application
+
+In under six hours, and using React.js for development and from Kiwi.com's [flights API](https://docs.kiwi.com/) for fetching data, we have created a basic web application that allows the user to search for flights.
+
+ø Tools used in this project:
+
+— JavaScript with React.js;
+
+— HTML5;
+
+— SASS/SCSS for styling;
+
+— Bootstrap/Reactstrap;
+
+— Git for version control;
+
+— Gulp for task running (compiling SCSS, structuring, building for production, and watching);
+
+— Yarn as a package manager.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
